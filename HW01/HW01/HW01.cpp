@@ -24,9 +24,40 @@ int make_avg(int* arr, int size)
 	return avg;
 }
 
+// 버블정렬
 void sort_arr(int* arr, int size, int order)
 {
-
+	int tmp;
+	if (order == 1)
+	{
+		for (int i = 0; i < size - 1; i++)
+		{
+			for (int j = i; j < size - i - 1; j++)
+			{
+				if (arr[j] > arr[j + 1])
+				{
+					tmp = arr[j];
+					arr[j] = arr[j + 1];
+					arr[j + 1] = tmp;
+				}
+			}
+		}
+	}
+	else
+	{
+		for (int i = 0; i < size - 1; i++)
+		{
+			for (int j = 0; j < size - i - 1; j++)
+			{
+				if (arr[j] < arr[j + 1])
+				{
+					tmp = arr[j];
+					arr[j] = arr[j + 1];
+					arr[j + 1] = tmp;
+				}
+			}
+		}
+	}
 }
 
 int main()
@@ -42,10 +73,33 @@ int main()
 
 	avg = sum / 5;
 
-	cout << sum << '\n' << avg << '\n';
+	cout << "sum : " << sum << '\n' << "average : " << avg << '\n';
 
 
-	cout << make_sum(arr, 5) << '\n' << make_avg(arr, 5);
+	cout << "Function called sum and average\n";
+	cout << "sum : " << make_sum(arr, 5) << '\n' << "average : " << make_avg(arr, 5) << '\n';
 
+	cout << "Before sorting\n";
+	for (int i = 0; i < 5; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << '\n';
+
+	cout << "After sorting(ascending)\n";
+	sort_arr(arr, 5, 1);
+	for (int i = 0; i < 5; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << '\n';
+
+	cout << "After sorting(descending)\n";
+	sort_arr(arr, 5, 2);
+	for (int i = 0; i < 5; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << '\n';
 }
 
